@@ -8,8 +8,8 @@
   "display": "standalone",
   "orientation": "any",
   "lang": "fr",
-  "background_color": "#1a1a2e",
-  "theme_color": "#1a1a2e",
+  "background_color": "#5a3ff0",
+  "theme_color": "#5a3ff0",
   "categories": ["education", "music", "games"],
   "icons": [
     {
