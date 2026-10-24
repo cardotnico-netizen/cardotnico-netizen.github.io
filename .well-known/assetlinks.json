@@ -1,0 +1,11 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "fr.cardotnico.rhythmalong",
+    "sha256_cert_fingerprints": [
+      "BA:BE:9C:22:A1:E5:ED:67:17:AA:61:92:65:A0:EE:74:15:87:43:59:51:F5:2D:00:50:D1:7A:4A:84:D8:FD:C6",
+      "32:1C:5C:46:2D:E1:1E:BD:5C:43:BF:23:51:EB:5B:A0:66:E8:B8:26:59:F6:60:28:09:8F:AE:AB:6D:F8:B9:A3"
+    ]
+  }
+}]
