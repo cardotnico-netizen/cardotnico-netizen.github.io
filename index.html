@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#5a3ff0">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>Rythmes — le jeu</title>
+<title>Rhythm Along</title>
 <style>
 /* Polices intégrées (sous-ensembles latins, WOFF) — licence SIL Open Font License 1.1
    Press Start 2P © 2012 The Press Start 2P Project Authors (CodeMan38) · Chakra Petch © 2018 Cadson Demak */
@@ -3081,7 +3081,7 @@ function i18nNode(n){
 var I18N_OBS=null;
 function i18nApply(){
   document.documentElement.lang=LANG||'fr';
-  document.title=LANG==='en'?'Rhythms — the game':'Rythmes — le jeu';
+  document.title='Rhythm Along';
   if(LANG==='en'){if(!I18N)i18nBuild();i18nNode(document.body);
     if(!I18N_OBS){I18N_OBS=new MutationObserver(ms=>{if(LANG!=='en')return;ms.forEach(m=>{if(m.type==='characterData')i18nNode(m.target);else if(m.type==='attributes')i18nNode(m.target);else m.addedNodes.forEach(i18nNode);});});
       I18N_OBS.observe(document.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['aria-label','title']});}}
@@ -3093,7 +3093,7 @@ function setLang(l){LANG=l;G.set.lang=l;save();if(l==='fr'){TRD=new WeakMap();}
 /* Choix de la langue au premier lancement */
 function langPicker(){
   const d=document.createElement('div');d.id='langPick';d.setAttribute('translate','no');
-  d.innerHTML=`<div class="lpbox"><div class="lpt">Rythmes</div><p>Choisis ta langue<br><span>Choose your language</span></p>
+  d.innerHTML=`<div class="lpbox"><div class="lpt">Rhythm Along</div><p>Choisis ta langue<br><span>Choose your language</span></p>
     <button class="btn primary big" data-l="fr">Français</button><button class="btn primary big" data-l="en">English</button></div>`;
   document.body.appendChild(d);
   d.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{d.remove();setLang(b.dataset.l);});
