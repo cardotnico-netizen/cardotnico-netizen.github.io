@@ -52,6 +52,10 @@ button:disabled{cursor:default;opacity:.45}
 .topbar{display:flex;align-items:center;gap:10px;padding:10px 16px 8px;max-width:640px;width:100%;margin:0 auto}
 .topbar h1{font:800 22px/1.1 var(--round);margin:0;flex:1;letter-spacing:-.01em}
 .stat{white-space:nowrap;display:inline-flex;align-items:center;gap:4px;font:800 14px var(--round);padding:5px 10px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+.stat{color:var(--ink)}
+.stat:active{transform:translate(2px,2px)}
+.stat.setbtn{padding:3px 5px}
+.stat.setbtn .pix{margin-right:0}
 .stat.lvl{padding:3px 10px 3px 3px}
 .stat.lvl b{background:var(--accent);color:var(--accent-ink);border-radius:99px;min-width:24px;height:24px;display:grid;place-items:center;font-size:13px}
 main#tabBody{flex:1;overflow:auto;-webkit-overflow-scrolling:touch}
@@ -247,7 +251,7 @@ nav.nav button.on .ic{--pa:var(--accent)}
 .mode:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line)}
 .stat .pix{margin-right:2px;--pa:#ff8a00}
 .stat .pix.gold{color:var(--gold)}
-.stat:first-of-type .pix{color:#e8352a}
+#stStreak .pix{color:#e8352a}
 
 /* ---------- Fenêtres de fin : compactes, sans défilement ---------- */
 .res.compact .bigstars{font-size:38px;gap:6px;margin:0 0 2px}
@@ -321,6 +325,9 @@ img.px{display:block;width:100%;height:auto;image-rendering:pixelated;image-rend
 [data-skin=arcade] :is(.panel,.qhead,.qkind){border:2px dashed color-mix(in srgb,var(--line) 55%,transparent);box-shadow:none;background:color-mix(in srgb,var(--surface) 65%,transparent)}
 [data-skin=arcade] .qkind small,[data-skin=arcade] .panel .rule{opacity:.92}
 .modes{margin-top:0}
+.qmodes{grid-template-columns:1fr 1fr 36px;align-items:start;gap:10px}
+.qbang{width:36px;height:36px;padding:0;background:var(--surface);color:var(--ink);font:400 16px/1 var(--display);border:3px solid var(--line);box-shadow:3px 3px 0 var(--line)}
+.qbang:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
 [data-skin=arcade] .mode{position:relative;border:4px solid var(--line);box-shadow:6px 6px 0 var(--line);padding:18px 8px 14px;cursor:pointer}
 [data-skin=arcade] .mode:not(.on){background:var(--surface)}
 [data-skin=arcade] .mode:not(.on):hover{background:color-mix(in srgb,var(--accent) 10%,var(--surface))}
@@ -430,6 +437,7 @@ img.px{display:block;width:100%;height:auto;image-rendering:pixelated;image-rend
 /* ---------- Écrans de jeu ---------- */
 .screen{position:fixed;inset:0;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--bg);display:none;flex-direction:column;z-index:5}
 .screen.on{display:flex}
+.screen{background:transparent}
 .ghead{display:flex;align-items:center;gap:10px;padding:10px 14px 6px;max-width:760px;width:100%;margin:0 auto}
 .ghead .t{flex:1;min-width:0}
 .ghead .t b{display:block;font:800 16px/1.2 var(--round);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -458,7 +466,7 @@ img.px{display:block;width:100%;height:auto;image-rendering:pixelated;image-rend
 .tools{display:flex;gap:8px;justify-content:center;margin:10px 0 4px;flex-wrap:wrap}
 
 /* Sans fin */
-#endless{background:color-mix(in srgb,var(--tint) 13%,var(--bg));transition:background 1.4s}
+#endless{background:color-mix(in srgb,var(--tint) 13%,transparent);transition:background 1.4s}
 .hp{flex-basis:100%;height:12px;border-radius:99px;background:var(--surface2);overflow:hidden}
 .hp i{display:block;height:100%;width:100%;border-radius:99px;background:var(--good);transition:width .2s,background .3s}
 .strip{position:relative;background:var(--surface);border-radius:20px;margin:6px 12px 0;border:2px solid color-mix(in srgb,var(--tint) 45%,var(--line));transition:border-color 1.4s;overflow:hidden}
@@ -482,7 +490,18 @@ img.px{display:block;width:100%;height:auto;image-rendering:pixelated;image-rend
 .hearts{font-size:17px;letter-spacing:1px}
 .qprompt{font:800 18px/1.25 var(--round);margin:4px 2px 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .listen{display:flex;align-items:center;gap:12px;background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:10px 12px;margin-bottom:10px;width:100%;text-align:left}
+.qfoot{display:flex;align-items:stretch;gap:10px}
+.qfoot #qGo{flex:1;min-width:0}
+.qfoot .listen{margin:0;height:100%;padding:6px 14px 6px 8px;white-space:nowrap}
+.qfoot .listen .pl{width:46px;height:46px}
+#qListenBox:empty{display:none}
 .listen .pl{width:52px;height:52px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-size:20px;flex-shrink:0}
+.tpick{margin:0 0 8px;background:var(--surface);border:3px solid var(--line);box-shadow:3px 3px 0 var(--line);padding:5px 12px 7px}
+.tplab{font:700 13px var(--round);text-align:center;color:var(--ink)}
+.tplab span{color:var(--accent)}
+.tprow{display:flex;align-items:center;gap:10px}
+.tprow input{flex:1;min-width:0;height:30px;accent-color:var(--accent);touch-action:none}
+.tprow b{font:800 16px var(--round);min-width:58px;text-align:right;white-space:nowrap}
 .listen b{font:800 16px var(--round);display:block}
 .listen>span:last-child>span{display:block;font-size:12.5px;color:var(--muted)}
 .qopt{display:grid;grid-template-columns:34px 1fr;gap:8px;align-items:center;background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:8px 10px 8px 8px;margin-bottom:8px;width:100%;text-align:left}
@@ -529,6 +548,7 @@ g.ev{color:var(--ink)}
 g.ev.on{color:var(--accent)}
 g.ev.ok{color:var(--good)} g.ev.approx{color:var(--warn)} g.ev.miss{color:var(--bad)}
 .cursor{stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;opacity:.85}
+.mhl{fill:color-mix(in srgb,var(--accent) 15%,transparent)}
 .tm{stroke-width:2.2;stroke-linecap:round}
 .tm.ok{stroke:var(--good)} .tm.approx{stroke:var(--warn)} .tm.extra{stroke:var(--bad)}
 .snip{display:inline-flex;flex-direction:column;align-items:center;background:var(--surface2);border-radius:10px;padding:2px 8px 4px;margin:0 6px 6px 0}
@@ -608,9 +628,10 @@ g.ev.ok{color:var(--good)} g.ev.approx{color:var(--warn)} g.ev.miss{color:var(--
 <div id="home">
   <header class="topbar">
     <h1><span id="tabIc"></span><span id="tabTitle">Parcours</span></h1>
-    <span class="stat" id="stStreak" title="Jours de suite">🔥 0</span>
-    <span class="stat" id="stStars" title="Étoiles">⭐ 0</span>
-    <span class="stat lvl" id="stLvl" title="Niveau du joueur"><b>1</b>XP</span>
+    <button type="button" class="stat" id="stStreak" title="Jours de suite">🔥 0</button>
+    <button type="button" class="stat" id="stStars" title="Étoiles">⭐ 0</button>
+    <button type="button" class="stat lvl" id="stLvl" title="Niveau du joueur"><b>1</b>XP</button>
+    <button type="button" class="stat setbtn" id="stSet" title="Réglages" aria-label="Réglages"></button>
   </header>
   <main id="tabBody">
     <div class="col" id="tab-map"></div>
@@ -649,6 +670,7 @@ g.ev.ok{color:var(--good)} g.ev.approx{color:var(--warn)} g.ev.miss{color:var(--
   </div>
   <div class="gfoot">
     <div class="judge" id="pJudge"></div>
+    <div class="tpick hidden" id="pTempoBox"><div class="tplab">Choisis ton tempo <span aria-hidden="true">▼</span></div><div class="tprow"><input type="range" id="pTempoR" step="1" aria-label="Choisis ton tempo"><b class="num" id="pTempoV"></b></div></div>
     <button class="pad" id="pPad"><span id="pPadL">Tape pour commencer</span><small id="pPadH">décompte, puis frappe chaque note</small></button>
     <div class="pads2 hidden" id="pPads"><button class="pad padG" id="pPadG"><span>G</span><small>ligne du bas</small></button><button class="pad padD" id="pPadD"><span>D</span><small>ligne du haut</small></button></div>
     <div class="padsH" id="pPadsH"></div>
@@ -689,7 +711,7 @@ g.ev.ok{color:var(--good)} g.ev.approx{color:var(--warn)} g.ev.miss{color:var(--
   </div>
   <div class="hud"><div class="qbar"><i id="qTime"></i></div></div>
   <div class="gbody" id="qBody"></div>
-  <div class="gfoot"><button class="btn primary big" id="qGo" disabled>Valider</button></div>
+  <div class="gfoot qfoot"><div id="qListenBox"></div><button class="btn primary big" id="qGo" disabled>Valider</button></div>
 </section>
 
 <section class="screen" id="settings">
@@ -1063,6 +1085,13 @@ function levelParams(li,st,nOverride){
   return {meters:L.m,pool:levelCells(li).map(id=>({c:CELLS[id],w:hot.has(id)?boost:1})),measures:nOverride||STEP_INFO[st].n,tie:L.tie,tieBar:!!L.tieBar,rest:L.rest,endLong:true,change:!!L.change};
 }
 function levelBpm(li,st){return Math.round(LEVELS[li].bpm*STEP_INFO[st].f);}
+/* Tempo varié pour l'Arcade et le Quiz : entre le tempo du niveau et un plafond qui dépend de la difficulté et de la note la plus rapide du niveau. */
+const IOI_CACHE={};
+function levelIOI(li){if(li in IOI_CACHE)return IOI_CACHE[li];let m=9;for(let k=0;k<6;k++){const ex=genExercise(levelParams(li,0,2),2000+k*31+li);if(!ex)continue;const tl=buildTimeline(ex,LEVELS[li].bpm),o=onsets(ex,tl);for(let i=1;i<o.length;i++)m=Math.min(m,o[i].t-o[i-1].t);}return IOI_CACHE[li]=m;}
+function arcBpm(li,d,poly,listen){
+  const base=LEVELS[li].bpm,floor=Math.max(0.1,0.28-0.02*d)*(poly?1.4:listen?0.7:1),cap=(130+10*(d-1))*(poly?0.8:1),mx=Math.max(base,Math.min(cap,base*levelIOI(li)/floor));
+  return Math.round((base+(mx-base)*Math.pow(Math.random(),0.6))/2)*2;
+}
 
 /* =========================================================
    3. GÉNÉRATION
@@ -1578,14 +1607,14 @@ const PIX={
   replay:['...####o..','..#....oo.','.#.....ooo','#......oo.','#......o..','#.........','#........#','.#......#.','..######..','..........'],
   dice:['##########','#........#','#.##..##.#','#.##..##.#','#........#','#........#','#.##..##.#','#.##..##.#','#........#','##########'],
   eye:['..........','...####...','.##....##.','#...oo...#','#..oooo..#','#..oooo..#','#...oo...#','.##....##.','...####...','..........'],
-  gear:['....##....','.#.####.#.','..######..','.##....##.','###.oo.###','###.oo.###','.##....##.','..######..','.#.####.#.','....##....'],
+  gear:["........####........","........####........","...##...####...##...","..####..####..####..","..################..","...##############...","....#####..#####....","....###......###....","#######......#######","######........######","######........######","#######......#######","....###......###....","....#####..#####....","...##############...","..################..","..####..####..####..","...##...####...##...","........####........","........####........"],
   play:['.#........','.###......','.#####....','.#######..','.########.','.#######..','.#####....','.###......','.#........','..........'],
 };
 function pix(name,size,cls){
   const R=PIX[name];if(!R)return'';let a='',b='';
   R.forEach((row,y)=>{let x=0;while(x<row.length){const c=row[x];if(c==='.'){x++;continue;}let w=1;while(x+w<row.length&&row[x+w]===c)w++;
     const r=`<rect x="${x}" y="${y}" width="${w}" height="1"/>`;if(c==='o')b+=r;else a+=r;x+=w;}});
-  return`<svg class="pix ${cls||''}" viewBox="0 0 10 10" width="${size||20}" height="${size||20}" shape-rendering="crispEdges" aria-hidden="true"><g fill="currentColor">${a}</g><g fill="var(--pa,var(--accent))">${b}</g></svg>`;
+  return`<svg class="pix ${cls||''}" viewBox="0 0 ${R.length} ${R.length}" width="${size||20}" height="${size||20}" shape-rendering="crispEdges" aria-hidden="true"><g fill="currentColor">${a}</g><g fill="var(--pa,var(--accent))">${b}</g></svg>`;
 }
 
 
@@ -1600,8 +1629,8 @@ function metersLabel(ex){const set=[];ex.measures.forEach(m=>{const l=METERS[m.m
 
 /* ---------- Stockage ---------- */
 const KEY='rythmes-jeu-v1';
-const DEF={xp:0,best:{},endless:{best:0,bestD:0,bestM:0,start:1,done:0},surv:{best:{},med:{},start:1},endlessP:{best:0,bestD:0,bestM:0,start:1,done:0},survP:{best:{},med:{},start:1},arcPoly:false,polySeen:false,pass:{prog:0,stock:0},stats:{},wins:{},winsMig:false,arcade:'climb',quiz:{best:0,bestD:0,start:1},badges:{},streak:0,lastDay:'',daily:{},dailyPick:null,
-  set:{timbre:'bois',volR:70,volM:60,metro:'beat',tol:'indulgent',lat:0,guide:false,tapSound:true,vib:true,unlock:false,test:false,theme:'light',skin:'atelier'}};
+const DEF={xp:0,best:{},endless:{best:0,bestD:0,bestM:0,start:1,done:0},surv:{best:{},med:{},start:1},endlessP:{best:0,bestD:0,bestM:0,start:1,done:0},survP:{best:{},med:{},start:1},arcPoly:false,polySeen:false,pass:{prog:0,stock:0},stats:{},wins:{},winsMig:false,arcade:'climb',quiz:{best:0,bestD:0,start:1,mode:'which',bestNote:0},badges:{},streak:0,lastDay:'',daily:{},dailyPick:null,
+  set:{timbre:'bois',volR:70,volM:60,metro:'beat',tol:'indulgent',lat:0,guide:false,tapSound:false,vib:true,unlock:false,test:false,theme:'light',skin:'atelier',follow:'measure'}};
 function load(){let s={};try{s=JSON.parse(localStorage.getItem(KEY))||{};}catch(e){}
   const o=JSON.parse(JSON.stringify(DEF));Object.keys(s).forEach(k=>{if(o[k]&&typeof o[k]==='object'&&!Array.isArray(o[k])&&k!=='best'&&k!=='badges'&&k!=='daily')Object.assign(o[k],s[k]);else o[k]=s[k];});return o;}
 let G=load();
@@ -1623,6 +1652,8 @@ const dName=d=>DIFF_NAMES[clamp(d,1,10)-1];
 function chip(d,small){return`<span class="dchip${small?' sm':''}" style="--dc:${dColor(d)}" title="Difficulté ${d}/10 — ${dName(d)}"><b>${d}</b>${small?'':dName(d)}</span>`;}
 /* Difficulté de référence de chaque étape de chaque niveau (échantillons fixes → stable d'une session à l'autre) */
 const LVL_D=LEVELS.map((L,li)=>[0,1,2].map(st=>{let s=0,n=0;for(let k=0;k<3;k++){const ex=genExercise(levelParams(li,st,4),1000+k*37+li);if(ex){s+=videoDifficulty(ex,levelBpm(li,st)).raw;n++;}}return n?clamp(Math.round(1+s/n*0.9),1,10):5;}));
+/* Arcade : six fois sur dix, un rythme plus simple joué plus vite. */
+function arcLevel(d,avoid){return pickLevel(Math.random()<0.4?d:Math.max(1,d-1-Math.floor(Math.random()*(2+Math.floor(d/3)))),avoid);}
 function pickLevel(d,avoid){
   const c=LEVELS.map((L,li)=>({li,k:Math.abs(LVL_D[li][0]-d)+(li===avoid?0.8:0)+Math.random()*0.6})).sort((a,b)=>a.k-b.k);
   return c[Math.floor(Math.random()*Math.min(4,c.length))].li;
@@ -1661,6 +1692,10 @@ function nextStage(li,st){
    Rejouer ne rapporte rien ; le total du jeu est fini (100 % = niveau 40). */
 const SURV=[[30,10,'🥉','30 s'],[60,20,'🥈','1 min'],[120,40,'🥇','2 min'],[300,80,'🏆','5 min']];
 const QUIZ_MS=[[500,20],[1500,40],[3000,80],[5000,120],[8000,180],[12000,250]];
+/* Paliers du quiz atteints par la note : [note minimale, difficulté de départ minimale]. G.quiz.best reste le seuil QUIZ_MS débloqué : l'XP déjà acquise ne bouge pas. */
+const QUIZ_N=[[5,1],[7,1],[8,1],[9,1],[10,1],[10,6]];
+const qzLab=i=>`${QUIZ_N[i][0]}/10${QUIZ_N[i][1]>1?` dès la difficulté ${QUIZ_N[i][1]}`:''}`;
+const SURV_END=300;
 function xpParts(){
   let parc=0;LEVELS.forEach((L,li)=>[0,1,2].forEach(st=>{parc+=stageStars(li,st)*10*LVL_D[li][st]+wins(li,st)*5*LVL_D[li][st];}));
   let end=0;for(let d=1;d<=(G.endless.done||0);d++)end+=50*d;
@@ -1824,6 +1859,7 @@ const ACH=[
   B('med1','🥉','Survivant','Première médaille de survie','skill',{v:()=>medals()}),
   B('gold','🥇','Or massif','Tenir 2 minutes en survie','skill',{v:()=>Object.keys(G.surv.med||{}).concat(Object.keys(G.survP.med||{})).some(k=>k.endsWith('-2'))?1:0}),
   B('five','⏱️','Cinq minutes chrono','Tenir 5 minutes en survie','skill',{v:()=>Object.keys(G.surv.med||{}).concat(Object.keys(G.survP.med||{})).some(k=>k.endsWith('-3'))?1:0}),
+  B('allfive','👑','Imbattable','Tenir 5 minutes dans toutes les difficultés en survie','skill',{goal:10,v:()=>Array.from({length:10},(_,i)=>i+1).filter(d=>(G.surv.med||{})[d+'-3']||(G.survP.med||{})[d+'-3']).length}),
   B('quiz10','🎯','Oreille d\'or','10 bonnes réponses sur 10 au quiz','skill',{v:()=>ST('quizPerfect')}),
   B('qfast','⚡','Oreille éclair','10 réponses justes en un éclair','skill',{goal:10,v:()=>ST('qFast')}),
   /* ---- Endurance (répétitif) ---- */
@@ -1939,19 +1975,21 @@ function renderRunScore(){
   let lines,parts,vbH=88,cy2=LY+30;
   if(RUN.poly){lines=layoutPoly(RUN.ex,RUN.exB,W-6);parts=drawPolySystems(lines,RUN.ex,RUN.exB);vbH=88+PDY;cy2=LY+PDY+30;}
   else{lines=layoutExercise(RUN.ex,W-6);parts=drawSystems(lines,RUN.ex,{beats:false}).map(p=>p+'<g class="tapmarks"></g>');}
-  box.innerHTML=parts.map(p=>`<svg class="sys" viewBox="0 12 ${W} ${vbH}" role="img" aria-label="Partition rythmique">${p}<line class="cursor" x1="0" y1="${LY-50}" x2="0" y2="${cy2}" style="display:none"/></svg>`).join('');
+  const hl=si=>lines[si].ms.map(ms=>`<rect class="mhl" data-mi="${ms.i}" x="${f1(ms.x0)}" y="${LY-50}" width="${f1(ms.x1-ms.x0)}" height="${cy2-LY+50}" style="display:none"/>`).join('');
+  box.innerHTML=parts.map((p,si)=>`<svg class="sys" viewBox="0 12 ${W} ${vbH}" role="img" aria-label="Partition rythmique">${hl(si)}${p}<line class="cursor" x1="0" y1="${LY-50}" x2="0" y2="${cy2}" style="display:none"/></svg>`).join('');
   const svgs=[...box.querySelectorAll('svg.sys')],meas=[];lines.forEach((sys,si)=>sys.ms.forEach(ms=>{meas[ms.i]={si,ms};}));
   const evEls=[],evElsB=[];
   if(RUN.poly){box.querySelectorAll('.lnA g.ev').forEach(g=>{evEls[+g.dataset.gi]=g;});box.querySelectorAll('.lnB g.ev').forEach(g=>{evElsB[+g.dataset.gi]=g;});}
   else box.querySelectorAll('g.ev').forEach(g=>{evEls[+g.dataset.gi]=g;});
-  RUN.rd={svgs,meas,evEls,evElsB,cursors:svgs.map(s=>s.querySelector('.cursor')),curSi:-1,curGi:-1};
+  RUN.rd={svgs,meas,evEls,evElsB,cursors:svgs.map(s=>s.querySelector('.cursor')),hls:[...box.querySelectorAll('.mhl')].reduce((a,r)=>{a[+r.dataset.mi]=r;return a;},[]),curMi:-1,curSi:-1,curGi:-1};
 }
 const runEls=line=>line==='B'?RUN.rd.evElsB:RUN.rd.evEls;
 const runEx=line=>line==='B'?RUN.exB:RUN.ex;
 function runCursor(t){
   const rd=RUN.rd,tl=RUN.tl;let mi=tl.meas.findIndex(m=>t<m.start+m.dur);if(mi<0)mi=tl.meas.length-1;
   const mt=tl.meas[mi],tick=Math.max(0,(t-mt.start)/mt.spt),L=rd.meas[mi];if(!L)return;const x=RUN.poly?xAtPoly(L.ms,tick):xAt(L.ms,tick);
-  rd.cursors.forEach((c,si)=>{if(si===L.si){c.setAttribute('x1',f1(x));c.setAttribute('x2',f1(x));c.style.display='';}else c.style.display='none';});
+  if(G.set.follow==='measure'){if(rd.curMi!==mi){if(rd.hls[rd.curMi])rd.hls[rd.curMi].style.display='none';if(rd.hls[mi])rd.hls[mi].style.display='';rd.curMi=mi;}}
+  else rd.cursors.forEach((c,si)=>{if(si===L.si){c.setAttribute('x1',f1(x));c.setAttribute('x2',f1(x));c.style.display='';}else c.style.display='none';});
   if(RUN.state==='hint'&&!RUN.poly){let gi=-1;L.ms.evs.forEach(o=>{if(o.ev.tick<=tick+0.01)gi=o.ev.gi;});const ev=RUN.ex.events[gi];gi=ev&&!ev.rest?gi:-1;
     if(rd.curGi!==gi){if(rd.curGi>=0&&rd.evEls[rd.curGi])rd.evEls[rd.curGi].classList.remove('on');if(gi>=0&&rd.evEls[gi])rd.evEls[gi].classList.add('on');rd.curGi=gi;}}
   if(rd.curSi!==L.si){rd.curSi=L.si;runScrollTo(L.si);}
@@ -1969,7 +2007,7 @@ function runScrollStep(){
   if(Math.abs(d)<1){b.scrollTop=RUN.scrollT;RUN.scrollRaf=0;return;}
   b.scrollTop+=d*0.22;RUN.scrollRaf=requestAnimationFrame(runScrollStep);
 }
-function runHideCursor(){if(RUN&&RUN.rd){RUN.rd.cursors.forEach(c=>c.style.display='none');if(RUN.rd.curGi>=0&&RUN.rd.evEls[RUN.rd.curGi])RUN.rd.evEls[RUN.rd.curGi].classList.remove('on');RUN.rd.curGi=-1;}}
+function runHideCursor(){if(RUN&&RUN.rd){RUN.rd.cursors.forEach(c=>c.style.display='none');if(RUN.rd.hls[RUN.rd.curMi])RUN.rd.hls[RUN.rd.curMi].style.display='none';RUN.rd.curMi=-1;if(RUN.rd.curGi>=0&&RUN.rd.evEls[RUN.rd.curGi])RUN.rd.evEls[RUN.rd.curGi].classList.remove('on');RUN.rd.curGi=-1;}}
 function runTapMark(T,cls,line){
   /* La marque est posée à côté de la note la plus proche, sur SA ligne (et sur la bonne portée en polyrythmie). */
   const tl=RUN.tl,rd=RUN.rd,list=RUN.ons.filter(o=>!RUN.poly||o.line===(line||'A'));if(!list.length)return;
@@ -1988,6 +2026,12 @@ function runReset(){Object.assign(RUN,{pts:0,combo:0,maxCombo:0,nOk:0,nAp:0,nMis
 const runPad=line=>RUN&&RUN.poly?(line==='B'?$('#pPadG'):$('#pPadD')):$('#pPad');
 function runJudgeEl(line){const j=$('#pJudge');j.dataset.side=RUN&&RUN.poly?(line==='B'?'l':'r'):'';return j;}
 
+/* Tempo au choix sur les étapes Maîtrise (non enregistré) */
+const TEMPO_KEEP={},TEMPO_MAX=200;
+function runTempoShow(){const on=RUN&&RUN.tMin!=null,bx=$('#pTempoBox');bx.classList.toggle('hidden',!on);bx.style.visibility=on&&RUN.state!=='play'&&RUN.state!=='hint'?'':'hidden';}
+function runTempoText(){const t=`${tempoSymbol(METERS[RUN.ex.measures[0].meter])} = ${RUN.bpm}`;$('#pTempo').textContent=t;if(RUN.tMin!=null)$('#pTempoV').textContent=t;}
+function runTempoInit(){runTempoText();runTempoShow();if(RUN.tMin==null)return;const r=$('#pTempoR');r.min=RUN.tMin;r.max=TEMPO_MAX;r.value=RUN.bpm;
+  r.oninput=()=>{RUN.bpm=+r.value;TEMPO_KEEP[RUN.li]=RUN.bpm;runTempoText();};r.onchange=()=>r.blur();}
 function vpips(n,anim){return`<span class="vpips">${Array.from({length:WIN_N},(_,i)=>`<i class="${i<n?'on':''}${anim&&i===anim-1?' new':''}"></i>`).join('')}</span>`;}
 function openRun(li,st,daily,seed,poly){
   stopAll();seed=seed||(daily?daily.seed:newSeed());
@@ -1998,7 +2042,8 @@ function openRun(li,st,daily,seed,poly){
   $('#pTitle').textContent=daily?'Défi du jour':`Niveau ${li+1} · ${LEVELS[li].t}`;
   $('#pSub').textContent=poly?`🥁 Polyrythmie · ${metersLabel(ex)}`:`${daily?`Niveau ${li+1} · `:''}${STEP_INFO[st].label} · ${metersLabel(ex)}`;
   $('#pChip').innerHTML=chip(diff);
-  $('#pTempo').textContent=`${tempoSymbol(METERS[ex.measures[0].meter])} = ${bpm}`;
+  if(!poly&&!daily&&st===2){RUN.tMin=bpm;RUN.bpm=clamp(TEMPO_KEEP[li]||bpm,bpm,TEMPO_MAX);}
+  runTempoInit();
   $('#pNote').innerHTML=poly?'Bouton droit (D) : ligne du haut · bouton gauche (G) : ligne du bas. Étoile bleue à 85 %.':daily?`Réussi à 85 % : +1 vers un pass (${G.pass.prog}/7). Le défi change chaque jour.`:`<span class="vline">${vpips(wins(li,st))} Validations ${wins(li,st)}/${WIN_N}</span>`;
   $('#pNew').classList.toggle('hidden',!!daily);$('#pHint').disabled=false;
   $('#pPad').classList.toggle('hidden',!!poly);$('#pPads').classList.toggle('hidden',!poly);
@@ -2015,15 +2060,15 @@ function runStart(){
   RUN.ons=mkOnsets(RUN.ex,RUN.tl,RUN.start,{line:'A'});
   if(RUN.poly){RUN.ons=RUN.ons.concat(mkOnsets(RUN.exB,RUN.tl,RUN.start,{line:'B'})).sort((a,b)=>a.t-b.t);}
   RUN.rd.curSi=0;runScrollTo(0);$('#pHint').disabled=true;$('#pNew').disabled=true;
-  padText('Tape ici',RUN.poly?'':'frappe chaque note');RUN.raf=requestAnimationFrame(runFrame);
+  runTempoShow();padText('Tape ici',RUN.poly?'':'frappe chaque note');RUN.raf=requestAnimationFrame(runFrame);
 }
 function runHint(){
   if(!RUN||RUN.state==='play')return;if(RUN.state==='hint'){runStop();return;}
   runClearMarks();RUN.hint=true;stat('hints');const s=runSchedule(true);Object.assign(RUN,s,{state:'hint'});RUN.rd.curSi=0;runScrollTo(0);
-  $('#pHint').textContent='■ Arrêter';padText('Écoute…','tape ensuite pour jouer');RUN.raf=requestAnimationFrame(runFrame);
+  runTempoShow();$('#pHint').textContent='■ Arrêter';padText('Écoute…','tape ensuite pour jouer');RUN.raf=requestAnimationFrame(runFrame);
 }
 function runStop(){if(!RUN)return;cancelAnimationFrame(RUN.raf);killBus(RUN.bus);RUN.bus=null;const was=RUN.state;RUN.state=was==='done'?'done':'idle';
-  $('#pCount').classList.remove('on');runHideCursor();$('#pHint').textContent='👂 Écouter d\'abord';$('#pHint').disabled=false;$('#pNew').disabled=false;
+  runTempoShow();$('#pCount').classList.remove('on');runHideCursor();$('#pHint').textContent='👂 Écouter d\'abord';$('#pHint').disabled=false;$('#pNew').disabled=false;
   if(was==='hint'||was==='play')padText('Tape pour commencer',RUN.poly?'deux mains : D en haut, G en bas':'décompte, puis frappe chaque note');}
 function runFrame(){
   if(!RUN||(RUN.state!=='play'&&RUN.state!=='hint'))return;
@@ -2048,7 +2093,7 @@ function runTap(line){
   runHud();
 }
 function runEnd(){
-  cancelAnimationFrame(RUN.raf);killBus(RUN.bus);RUN.bus=null;RUN.state='done';runHideCursor();$('#pCount').classList.remove('on');
+  cancelAnimationFrame(RUN.raf);killBus(RUN.bus);RUN.bus=null;RUN.state='done';runTempoShow();runHideCursor();$('#pCount').classList.remove('on');
   $('#pHint').disabled=false;$('#pNew').disabled=false;
   const n=RUN.ons.length,acc=n?clamp(Math.round((RUN.nOk+0.6*RUN.nAp-0.5*RUN.extras)/n*100),0,100):0,stars=starsFor(acc);
   const x0=xpTotal(),b0=plevel();let gained=0,rec=false,passMsg='',polyNew=false,winNew=false,winMsg='',winState=null;
@@ -2182,8 +2227,8 @@ function enGenChunk(){
 }
 function enNewPalier(){
   EN.p++;const surv=EN.mode==='surv';EN.d=surv?EN.fixD:Math.min(10,EN.startD+EN.p-1);const over=surv?0:Math.max(0,EN.startD+EN.p-1-10);
-  const li=pickLevel(EN.poly?Math.max(1,EN.d-1):EN.d,EN.li);EN.li=li;
-  EN.bpm=clamp(Math.round(LEVELS[li].bpm*(1+0.05*Math.max(0,EN.d-LVL_D[li][0]))*(1+0.06*over)),36,184);EN.inPal=0;
+  const li=arcLevel(EN.poly?Math.max(1,EN.d-1):EN.d,EN.li);EN.li=li;
+  EN.bpm=clamp(Math.round(arcBpm(li,EN.d,EN.poly)*(1+0.06*over)),36,240);EN.inPal=0;
 }
 function enItemContent(){
   const c=enGenChunk(),tl=buildTimeline(c.ex,EN.bpm);EN.inPal++;
@@ -2216,7 +2261,7 @@ function enBuild(it,vR){
     ch.lay=ex.measures.map((mm,i)=>{const meter=METERS[mm.meter],mt=tl.meas[i];
       return{mm,i,meter,beats:meter.beats,ts:false,x0:X(mt.start)-EN_BAR,x1:X(mt.start+mt.dur)-EN_BAR,evs:mm.events.map(ev=>({ev,x:X(mt.start+ev.tick*mt.spt)}))};});
     ch.lay.forEach(ms=>{s+=drawMeasure(ms,{},false);ms.evs.forEach(o=>{pos[o.ev.gi]=o.x;});
-      if(ms.mm.meter!==prev){const m=ms.meter;s+=`<text class="tso" x="${f1(ms.x0)}" y="${LY-52}">${m.n}</text><text class="tso" x="${f1(ms.x0)}" y="${LY-38}">${m.d}</text>`;}
+      if(ms.mm.meter!==prev){const m=ms.meter;s+=`<text class="tso" x="${f1(ms.x0)}" y="${LY-41}">${m.n}</text><text class="tso" x="${f1(ms.x0)}" y="${LY-28}">${m.d}</text>`;}
       prev=ms.mm.meter;});
     ex.events.forEach(e=>{if(e.tie&&pos[e.gi+1]!==undefined)s+=tieArc(pos[e.gi]+3,pos[e.gi+1]-3);});
     if(it.exB){const B=it.exB,posB={};let sb=`<line class="staff" x1="-2" y1="${LY}" x2="${f1(ch.w)}" y2="${LY}"/>`;
@@ -2267,7 +2312,7 @@ function enFrame(){
       if(ch.p>1){if(!surv)EN.health=Math.min(100,EN.health+10);vib([20,40,20]);}}
     else{EN.maxDiff=Math.max(EN.maxDiff,ch.diff);$('#eChip').innerHTML=chip(EN.mode==='surv'?EN.fixD:ch.diff);if(EN.tStart==null)EN.tStart=ch.t0;}
     enHud();}
-  if(EN.tStart!=null&&now>EN.tStart){const el=now-EN.tStart,s0=Math.floor(EN.el||0);EN.el=el;if(Math.floor(el)!==s0&&EN.mode==='surv'){enHud();enMedals();}}
+  if(EN.tStart!=null&&now>EN.tStart){const el=now-EN.tStart,s0=Math.floor(EN.el||0);EN.el=el;if(EN.mode==='surv'&&el>=SURV_END){EN.el=SURV_END;enHud();enMedals();enOver('win');return;}if(Math.floor(el)!==s0&&EN.mode==='surv'){enHud();enMedals();}}
   sweep(EN.ons,now-lat(),o=>{EN.nMiss++;EN.combo=0;EN.health-=14;markEv(o.line==='B'?o.ch.evElsB:o.ch.evEls,o.line==='B'?o.ch.exB:o.ch.ex,o.gi,'miss');popJudge(enJudgeEl(o.line),enPad(o.line),'miss','Raté');vib(40);enHud();},EN.oi);
   while(EN.oi<EN.ons.length&&EN.ons[EN.oi].st)EN.oi++;
   if(EN.oi>200){EN.ons.splice(0,EN.oi-20);EN.oi=20;}
@@ -2295,6 +2340,7 @@ function enTap(line){
   enHud();
 }
 function enOver(quit){
+  const win=quit==='win';if(win)quit=false;
   if(!EN||EN.state!=='play')return;EN.state='over';cancelAnimationFrame(EN.raf);killBus(EN.bus);
   const now=heardNow();let meas=0;EN.chunks.forEach(c=>{if(c.count)return;c.tl.meas.forEach(m=>{if(c.t0+m.start+m.dur<=now)meas++;});});
   EN.meas=(EN.measPruned||0)+meas;
@@ -2308,8 +2354,9 @@ function enOver(quit){
   const xp=E.xpRun||0,xpLine=xp?`+${xp} XP`:surv?'Pas de nouvelle médaille : pas d\'XP':'Aucun nouveau palier franchi : pas d\'XP';
   const medRow=surv?`<div class="medals">${SURV.map(([sec,,ic,lab],i)=>`<span class="${S0.med[E.fixD+'-'+i]?'on':''}${E.medals.includes(i)?' new':''}">${ic}<small>${lab}</small></span>`).join('')}</div>`:'';
   setTimeout(()=>sheet(`<div class="res">
-    <div style="font-size:44px;line-height:1">${quit?'🏁':'💥'}</div>
-    <h2 style="margin:6px 0 2px">${quit?'Partie arrêtée':'Fin de partie'}</h2>
+    <div style="font-size:44px;line-height:1">${win?'🏆':quit?'🏁':'💥'}</div>
+    <h2 style="margin:6px 0 2px">${win?'Survie terminée !':quit?'Partie arrêtée':'Fin de partie'}</h2>
+    ${win?`<p class="lead" style="margin:4px 0 8px">${E.fixD>=10?'Bravo, tu es meilleur que le jeu. Ça fait longtemps que tu es là ?':'Félicitations, tu as tenu jusqu\'au bout ! Les autres niveaux t\'attendent.'}</p>`:''}
     ${rec?'<div class="newrec">Nouveau record</div>':''}
     <div class="pct num">${surv?fmtT(el):E.score.toLocaleString(LOC())}</div>
     <div class="muted" style="margin-bottom:8px">${surv?`tenu en survie`:'points'}</div>
@@ -2335,7 +2382,7 @@ function qWhich(d,li){
   const cfg={n:d<=2?3:4,len:d<=4?1:2,sim:d<=3?3:d<=6?2:1},p=qParams(li,cfg.len);
   let q=buildQuiz(cfg,mulberry(Date.now()%2147483647),p);
   if(!q&&cfg.n===4)q=buildQuiz(Object.assign({},cfg,{n:3}),mulberry((Date.now()+7)%2147483647),p);
-  if(!q)return null;const bpm=levelBpm(li,0);
+  if(!q)return null;const bpm=arcBpm(li,d,false,true);
   return{type:'which',li,bpm,opts:q.options,answer:q.answer,sel:null,diff:videoDifficulty(q.options[q.answer],bpm).level};
 }
 function qDiff(d,li){
@@ -2360,34 +2407,34 @@ function qDiff(d,li){
       if(!done){ok=false;break;}
     }
     if(!ok)continue;
-    const bpm=levelBpm(li,0);
+    const bpm=arcBpm(li,d,false,true);
     return{type:'diff',li,bpm,base,played:exFromCells(nseq),changed:new Set(mis),sel:new Set(),diff:videoDifficulty(base,bpm).level};
   }
   return null;
 }
 function qMake(d){
-  for(let t=0;t<8;t++){const li=pickLevel(d,QZ.lastLi);const q=(d>=2&&Math.random()<0.4?qDiff(d,li):null)||qWhich(d,li);if(q){QZ.lastLi=li;return q;}}
-  return qWhich(1,0);
+  for(let t=0;t<8;t++){const li=pickLevel(d,QZ.lastLi);const q=QZ.mode==='diff'?qDiff(Math.max(2,d),li):qWhich(d,li);if(q){QZ.lastLi=li;return q;}}
+  for(let t=0;t<60;t++){const li=pickLevel(Math.max(1,d-(t>>2)),-1),q=(QZ.mode==='diff'&&qDiff(Math.max(2,d),li))||qWhich(Math.max(1,d-(t>>2)),li);if(q){QZ.lastLi=li;return q;}}
+  return qWhich(1,0)||qWhich(3,pickLevel(3,-1));
 }
 function qzStart(startD){
-  stopAll();audio();QZ={startD,d:startD,i:0,lives:3,score:0,right:0,run:0,maxD:startD,lastLi:-1};show('quiz');qzNext();
+  stopAll();audio();QZ={startD,mode:G.quiz.mode==='diff'?'diff':'which',d:startD,i:0,right:0,run:0,maxD:startD,lastLi:-1};show('quiz');qzNext();
 }
 function qzHud(){
-  $('#qNum').textContent=`Question ${QZ.i}/${QN}`;$('#qHearts').textContent='❤️'.repeat(QZ.lives)+'🤍'.repeat(3-QZ.lives);
-  $('#qScore').textContent=QZ.score.toLocaleString(LOC());
+  $('#qNum').textContent=`Question ${QZ.i}/${QN}`;$('#qHearts').textContent=QZ.mode==='diff'?'Erreurs':'Lequel ?';
 }
 function qzNext(){
   qzStopAudio();
-  if(QZ.i>=QN||QZ.lives<=0){qzOver();return;}
-  QZ.i++;const q=qMake(QZ.d);QZ.q=q;q.state='ask';q.limit=q.type==='diff'?22+q.base.measures.length*4:25;q.t0=null;q.heard=false;
+  if(QZ.i>=QN){qzOver();return;}
+  QZ.i++;const q=qMake(QZ.d);QZ.q=q;q.state='ask';q.limit=10;q.t0=null;q.heard=false;
   QZ.maxD=Math.max(QZ.maxD,q.diff);qzHud();qzRender();$('#qBody').scrollTop=0;
   const g=$('#qGo');g.textContent='Valider';g.disabled=true;g.onclick=qzValidate;
-  $('#qTime').style.width='100%';$('#qTime').classList.remove('low');
+  $('#qTime').style.width='100%';$('#qTime').classList.remove('low');$('#qScore').textContent=q.limit+' s';
   cancelAnimationFrame(QZ.raf);QZ.raf=requestAnimationFrame(qzTick);
 }
 function qzTick(){
   const q=QZ&&QZ.q;if(!q||q.state!=='ask')return;
-  if(q.t0){const left=Math.max(0,q.limit-(performance.now()-q.t0)/1000),f=left/q.limit,b=$('#qTime');b.style.width=(f*100)+'%';b.classList.toggle('low',f<0.25);
+  if(q.t0){const left=Math.max(0,q.limit-(performance.now()-q.t0)/1000),f=left/q.limit,b=$('#qTime');b.style.width=(f*100)+'%';b.classList.toggle('low',f<0.3);$('#qScore').textContent=Math.ceil(left)+' s';
     if(left<=0){qzValidate(true);return;}}
   QZ.raf=requestAnimationFrame(qzTick);
 }
@@ -2403,7 +2450,7 @@ function qSvg(ex,W,boxed,cls){
 function qzRender(){
   const q=QZ.q,box=$('#qBody'),W=Math.max(300,Math.min(620,Math.round((box.clientWidth||360)-60))),done=q.state==='done';
   let h=`<div class="qprompt">${chip(q.diff)}<span>${q.type==='which'?'Quel rythme entends-tu ?':'Coche les mesures qui ne correspondent pas à ce que tu entends'}</span></div>`;
-  if(!done)h+=`<button class="listen" id="qListen"><span class="pl">${QB?'■':'▶'}</span><span><b>${QB?'Écoute en cours…':q.heard?'Réécouter':'Écouter'}</b><span>${tempoSymbol(METERS[(q.type==='which'?q.opts[0]:q.base).measures[0].meter])} = ${q.bpm} · ${q.heard?'le temps tourne':'le chrono démarre après la première écoute'}</span></span></button>`;
+  $('#qListenBox').innerHTML=done?'':`<button class="listen" id="qListen"><span class="pl">${QB?'■':'▶'}</span><span><b>Écouter</b></span></button>`;
   if(done)h+=`<div class="qfb ${q.ok?'good':'bad'}">${q.fb}</div>`;
   if(q.type==='which'){
     h+=q.opts.map((ex,i)=>{let c='';if(done)c=i===q.answer?'good':i===q.sel?'bad':'';else if(q.sel===i)c='sel';
@@ -2433,27 +2480,27 @@ function qzValidate(timeout){
   else if(q.type==='which')q.ok=q.sel===q.answer;
   else q.ok=q.sel.size===q.changed.size&&[...q.sel].every(i=>q.changed.has(i));
   const left=q.t0?Math.max(0,q.limit-(performance.now()-q.t0)/1000):q.limit;
-  if(q.ok){stat('qRight');if(q.t0&&left/q.limit>=0.8)stat('qFast');QZ.right++;QZ.run++;const pts=Math.round((100*q.diff+50*q.diff*left/q.limit)*(1+0.1*Math.min(5,QZ.run-1)));QZ.score+=pts;
-    q.fb=`Juste ! +${pts} points${QZ.run>=3?` · série de ${QZ.run} 🔥`:''}`;if(QZ.run%2===0)QZ.d=Math.min(10,QZ.d+1);vib(15);}
-  else{QZ.lives--;QZ.run=0;QZ.d=Math.max(QZ.startD,QZ.d-1);vib([30,50,30]);
+  if(q.ok){stat('qRight');if(q.t0&&left/q.limit>=0.5)stat('qFast');QZ.right++;QZ.run++;
+    q.fb='Bonne réponse !';if(QZ.run%2===0)QZ.d=Math.min(10,QZ.d+1);vib(15);}
+  else{QZ.run=0;QZ.d=Math.max(QZ.startD,QZ.d-1);vib([30,50,30]);
     q.fb=timeout===true?'Temps écoulé !':q.type==='which'?`Raté : c'était ${'ABCD'[q.answer]}.`:`Raté : ${q.changed.size>1?'les mesures changées étaient':'la mesure changée était'} ${[...q.changed].sort().map(i=>'n° '+(i+1)).join(' et ')}.`;
     q.fb+=' Réécoute pour comparer.';}
-  qzHud();qzRender();$('#qTime').style.width='0%';
-  const g=$('#qGo');g.disabled=false;g.textContent=QZ.i>=QN||QZ.lives<=0?'Voir le résultat':'Question suivante';g.onclick=qzNext;
+  qzHud();qzRender();$('#qTime').style.width='0%';$('#qScore').textContent='';
+  const g=$('#qGo');g.disabled=false;g.textContent=QZ.i>=QN?'Voir le résultat':'Question suivante';g.onclick=qzNext;
 }
 function qzOver(){
   qzStopAudio();cancelAnimationFrame(QZ.raf);const done=QZ.i;
-  const x0=xpTotal(),b0=plevel(),rec=QZ.score>G.quiz.best&&QZ.score>0;if(rec)G.quiz.best=QZ.score;G.quiz.bestD=Math.max(G.quiz.bestD||0,QZ.maxD);
+  const x0=xpTotal(),b0=plevel(),note=QZ.right,rec=note>(G.quiz.bestNote||0);if(rec)G.quiz.bestNote=note;G.quiz.bestD=Math.max(G.quiz.bestD||0,QZ.maxD);
+  QUIZ_N.forEach(([n,sd],i)=>{if(note>=n&&QZ.startD>=sd)G.quiz.best=Math.max(G.quiz.best||0,QUIZ_MS[i][0]);});
   if(QZ.right===QN){stat('quizPerfect');badge('quiz10');}if(QZ.right===0&&done>0)G.stats.quiz0=1;played();save();const xp=xpDone(x0,b0);renderTop();
-  const nx=QUIZ_MS.find(m=>(G.quiz.best||0)<m[0]);
+  const nx=QUIZ_MS.findIndex(m=>(G.quiz.best||0)<m[0]);
   sheet(`<div class="res">
-    <div style="font-size:44px;line-height:1">${QZ.right===QN?'🎯':QZ.lives<=0?'💔':'🎧'}</div>
-    <h2 style="margin:6px 0 2px">${QZ.lives<=0?'Plus de cœurs':'Quiz terminé'}</h2>
+    <div style="font-size:44px;line-height:1">${QZ.right===QN?'🎯':'🎧'}</div>
+    <h2 style="margin:6px 0 2px">Quiz terminé</h2>
     ${rec?'<div class="newrec">Nouveau record</div>':''}
-    <div class="pct num">${QZ.score.toLocaleString(LOC())}</div><div class="muted" style="margin-bottom:8px">points</div>
+    <div class="pct num">${note}/10</div><div class="muted" style="margin-bottom:8px">bonnes réponses</div>
     <div class="row" style="justify-content:center;gap:6px">Difficulté atteinte ${chip(QZ.maxD)}</div>
-    <div class="chips4 num" style="grid-template-columns:repeat(3,1fr)"><div><b>${QZ.right}/${done}</b>bonnes réponses</div><div><b>${QZ.lives}</b>cœurs restants</div><div><b>${(G.quiz.best||0).toLocaleString(LOC())}</b>record</div></div>
-    <div class="xpgain">${xp?`+${xp} XP`:'Pas de nouveau palier de score : pas d\'XP'}</div>${nx?`<div class="muted" style="font-size:12.5px">Prochain palier : ${nx[0].toLocaleString(LOC())} points (+${nx[1]} XP)</div>`:''}
+    <div class="xpgain">${xp?`+${xp} XP`:'Pas de nouveau palier : pas d\'XP'}</div>${nx>=0?`<div class="muted" style="font-size:12.5px">Prochain palier : ${qzLab(nx)} (+${QUIZ_MS[nx][1]} XP)</div>`:''}
     <div class="sbtns"><button class="btn primary big" data-a="again">Rejouer</button><button class="btn big" data-a="back">Retour</button></div></div>`,box=>{
       box.querySelector('[data-a=again]').onclick=()=>{closeSheet();qzStart(QZ.startD);};
       box.querySelector('[data-a=back]').onclick=()=>{closeSheet();show('home');};
@@ -2587,7 +2634,7 @@ function renderEndlessTab(){
   const mode=G.arcade==='surv'?'surv':'climb',P=arcPoly();
   let h=`<div class="hsub">Choisis ton mode</div><div class="modes" id="arcModes" role="radiogroup">
     <button class="mode ${mode==='climb'?'on':''}" data-m="climb" role="radio" aria-checked="${mode==='climb'}"><span class="radio"></span>${pix('inf',40)}<b>Sans fin</b><small>Monte le plus haut possible</small></button>
-    <button class="mode ${mode==='surv'?'on':''}" data-m="surv" role="radio" aria-checked="${mode==='surv'}"><span class="radio"></span>${pix('watch',40)}<b>Survie</b><small>Tiens le plus longtemps</small></button></div>`;
+    <button class="mode ${mode==='surv'?'on':''}" data-m="surv" role="radio" aria-checked="${mode==='surv'}"><span class="radio"></span>${pix('watch',40)}<b>Survie</b><small>Tiens 5 minutes</small></button></div>`;
   h+=polyOpen()?`<label class="polytog"><span style="display:flex;gap:10px;align-items:center">${pix('drum',26)}<span><b>Polyrythmie</b><small>Deux lignes, deux mains · records à part</small></span></span><input type="checkbox" class="sw" id="polySw" ${P?'checked':''}></label>`
     :`<button class="polytog locked" id="polyLock" style="width:100%;text-align:left"><span style="display:flex;gap:10px;align-items:center">${pix('lock',26)}<span><b>Polyrythmie</b><small>S'ouvre au monde 2 du parcours</small></span></span></button>`;
   if(mode==='climb'){
@@ -2609,6 +2656,7 @@ function renderEndlessTab(){
       return`<button class="srow ${d===S.start?'on':''}" data-d="${d}" style="--dc:${dColor(d)}" ${o?'':'disabled'}>${chip(d,true)}<span class="sn">${o?'':pix('lock',13)+' '}${dName(d)}</span><span class="sm">${SURV.map(([,,ic],k)=>`<i class="${S.med[d+'-'+k]?'on':''}">${ic}</i>`).join('')}</span><span class="st num">${b?fmtT(b):'—'}</span></button>`;}).join('')}</div>
     <div class="hsub">Bon à savoir</div><div class="panel"><div class="ptitle">${pix('watch',18)}Comment ça marche</div><div class="rules">
       ${rule('lock','Une seule difficulté, du début à la fin.')}
+      ${rule('flag','La partie se termine à 5 minutes.')}
       ${rule('heart','Erreur : ta jauge baisse. Note bien jouée : elle remonte un peu.')}
       ${rule('medal',`Médailles à ${SURV.map(s=>s[3]).join(', ')}.`)}
       ${rule('up','Tenir 1 min ouvre la difficulté suivante.')}</div></div>`;
@@ -2623,21 +2671,24 @@ function renderEndlessTab(){
 /* ---------- Quiz ---------- */
 function renderQuizTab(){
   const Q=G.quiz;const bd=Q.bestD||0;if(!startOpen(Q.start,bd))Q.start=1;
-  const next=QUIZ_MS.find(m=>(Q.best||0)<m[0]);
-  $('#tab-quiz').innerHTML=`<div class="hsub">Départ</div>${startPicker(Q.start,bd)}
+  const nx=QUIZ_MS.findIndex(m=>(Q.best||0)<m[0]),M=Q.mode==='diff'?'diff':'which';
+  $('#tab-quiz').innerHTML=`<div class="hsub">Choisis ton mode</div><div class="modes qmodes" id="qzModes" role="radiogroup">
+      <button class="mode ${M==='which'?'on':''}" data-m="which" role="radio" aria-checked="${M==='which'}"><span class="radio"></span>${pix('note',36)}<b>Lequel ?</b><small>Écoute et choisis la bonne partition</small></button>
+      <button class="mode ${M==='diff'?'on':''}" data-m="diff" role="radio" aria-checked="${M==='diff'}"><span class="radio"></span>${pix('check',36)}<b>Erreurs</b><small>Coche les mesures qui ne collent pas</small></button>
+      <button class="qbang" id="qzInfo" aria-label="Comment ça marche" title="Comment ça marche">!</button></div>
+    <div class="hsub">Départ</div>${startPicker(Q.start,bd)}
     <div style="margin-top:14px"><button class="btn primary big" id="qzGo">${pix('play',16)} Jouer</button></div>
-    <div class="panel"><div class="ptitle">${pix('trophy',18)}Hi-score</div>${hiscore([['Meilleur score',(Q.best||0).toLocaleString(LOC())],['Difficulté max',bd||'—'],['Prochain palier',next?`${next[0].toLocaleString(LOC())} (+${next[1]} XP)`:'tous atteints']])}
-      <div class="qms" style="margin-top:10px">${QUIZ_MS.map(([s,x])=>`<span class="${(Q.best||0)>=s?'on':''}"><b>${s.toLocaleString(LOC())}</b>+${x} XP</span>`).join('')}</div></div>
-    <div class="hsub">Bon à savoir</div><div class="qhead">${pix('phones',46)}<div><b>Quiz d'écoute</b>
-      <div class="tags"><span class="tag">10 questions</span><span class="tag">${pix('heart',13)} ×3</span><span class="tag">${pix('watch',13)} chrono</span></div></div></div>
-    <div class="qkinds">
-      <div class="qkind">${pix('note',36)}<b>Lequel ?</b><small>Écoute et choisis la bonne partition</small></div>
-      <div class="qkind">${pix('check',36)}<b>Erreurs</b><small>Coche les mesures qui ne collent pas</small></div></div>
-    <div class="panel"><div class="ptitle">${pix('phones',18)}Comment ça marche</div><div class="rules">
-      ${rule('watch','Le chrono démarre après la 1re écoute.')}
-      ${rule('bolt','Réponds vite : bonus de points.')}
-      ${rule('up','2 bonnes réponses d\'affilée : difficulté +1.')}
-      ${rule('heart','Mauvaise réponse : un cœur en moins.')}</div></div>`;
+    <div class="panel"><div class="ptitle">${pix('trophy',18)}Hi-score</div>${hiscore([['Meilleure note',Q.bestNote?`${Q.bestNote}/10`:'—'],['Difficulté max',bd||'—'],['Prochain palier',nx>=0?`${qzLab(nx)} (+${QUIZ_MS[nx][1]} XP)`:'tous atteints']])}
+      <div class="qms" style="margin-top:10px">${QUIZ_MS.map(([s,x],i)=>`<span class="${(Q.best||0)>=s?'on':''}"><b>${QUIZ_N[i][0]}/10</b>${QUIZ_N[i][1]>1?`dès la difficulté ${QUIZ_N[i][1]} · `:''}+${x} XP</span>`).join('')}</div></div>`;
+  $$('#qzModes .mode').forEach(b=>b.onclick=()=>{Q.mode=b.dataset.m;save();renderQuizTab();});
+  $('#qzInfo').onclick=()=>sheet(`<h2>Bon à savoir</h2><div class="rules" style="margin:10px 0 14px">
+      ${rule('note','Lequel ? Écoute, puis choisis la partition qui correspond.')}
+      ${rule('check','Erreurs : écoute, puis coche les mesures différentes de ce que tu entends.')}
+      ${rule('watch','Après la première écoute, tu as 10 secondes pour répondre.')}
+      ${rule('bolt','Pas de points : c\'est bon ou pas bon. Temps écoulé, c\'est faux.')}
+      ${rule('trophy','10 questions, une note sur 10 à la fin.')}
+      ${rule('up','2 bonnes réponses d\'affilée : difficulté +1. Une erreur : difficulté -1.')}</div>
+      <div class="sbtns"><button class="btn primary big" data-a="ok">Compris</button></div>`,box=>{box.querySelector('[data-a=ok]').onclick=closeSheet;});
   $$('#tab-quiz .startd button').forEach(b=>b.onclick=()=>{Q.start=+b.dataset.d;save();bgFocus(Q.start);renderQuizTab();});
   $('#qzGo').onclick=()=>qzStart(Q.start);
 }
@@ -2678,6 +2729,7 @@ function renderSettings(){
     <div class="sr"><span class="lb">Vibrations</span><input type="checkbox" class="sw" data-c="vib" ${S.vib?'checked':''}></div>
   </div>
   <div class="set"><h3>Affichage et cours</h3>
+    <div class="sr"><span class="lb">Suivi de la partition<small>Dans le parcours : la mesure en cours est surlignée, ou un curseur avance sur les notes.</small></span>${segH('follow',[['measure','Mesure'],['cursor','Curseur']])}</div>
     <div class="sr"><span class="lb">Thème</span>${segH('theme',[['auto','Auto'],['light','Clair'],['dark','Sombre']])}</div>
     <div class="sr"><span class="lb">Tout débloquer<small>Mode enseignant : tous les niveaux et départs sont ouverts.</small></span><input type="checkbox" class="sw" data-c="unlock" ${S.unlock?'checked':''}></div>
     <div class="sr"><span class="lb">Effacer la progression<small>Étoiles, XP, records et badges.</small></span><button class="btn small" id="resetBtn" style="color:var(--bad)">Effacer</button></div>
@@ -2708,6 +2760,8 @@ function onTap(line){
 function bind(){
   $$('[data-pix]').forEach(el=>{el.innerHTML=pix(el.dataset.pix,22);});
   $$('nav.nav button').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
+  ['#stStreak','#stStars','#stLvl'].forEach(s=>{$(s).onclick=()=>setTab('me');});
+  $('#stSet').innerHTML=pix('gear',20);$('#stSet').onclick=openSettings;
   [['#pPad'],['#ePad'],['#pPadD','A'],['#pPadG','B'],['#ePadD','A'],['#ePadG','B']].forEach(([s,line])=>{$(s).addEventListener('pointerdown',e=>{e.preventDefault();onTap(line);});$(s).addEventListener('contextmenu',e=>e.preventDefault());});
   document.addEventListener('keydown',e=>{
     if(e.repeat||e.target.closest('input,select,textarea'))return;
@@ -2760,7 +2814,7 @@ function bgResize(){
 }
 function bgFrame(ts){
   BG.raf=requestAnimationFrame(bgFrame);
-  if(document.hidden||SCREEN!=='home')return;
+  if(document.hidden||(SCREEN!=='home'&&!BG.dirty))return;
   const still=BG_RM&&BG_RM.matches;if(still&&!BG.dirty&&BG.settled)return;
   if(ts-BG.last<33&&!BG.dirty)return;const dt=Math.min(0.2,(ts-(BG.last||ts))/1000);BG.last=ts;BG.dirty=false;
   // couleurs : glissement lent vers la cible
@@ -2889,7 +2943,7 @@ slam:['Grand slam','All 9 stars of a single level'],combo25:['In the groove','Co
 combo150:['Unstoppable','','Never lose the thread… for a very, very long time.'],end5:['Tenacious','Difficulty 5 in endless'],end8:['Indestructible','Difficulty 8 in endless'],
 end10:['Virtuoso','Difficulty 10 in endless'],score10k:['High score','10,000 points in endless'],score50k:['Golden cabinet','','A score worthy of being carved into the arcade cabinet.'],
 polyEnd5:['Drummer','Difficulty 5 in polyrhythm endless'],med1:['Survivor','First survival medal'],gold:['Solid gold','Last 2 minutes in survival'],
-five:['Five minutes flat','Last 5 minutes in survival'],quiz10:['Golden ear','10 right answers out of 10 in the quiz'],qfast:['Lightning ear','10 right answers in a flash'],
+five:['Five minutes flat','Last 5 minutes in survival'],allfive:['Unbeatable','Last 5 minutes at every difficulty in survival'],quiz10:['Golden ear','10 right answers out of 10 in the quiz'],qfast:['Lightning ear','10 right answers in a flash'],
 runs10:['Warm-up','Play 10 exercises'],runs50:['Dedicated','Play 50 exercises'],runs200:['Tireless','Play 200 exercises'],runs500:['Rhythm machine','Play 500 exercises'],
 taps1k:['A thousand taps','1,000 taps'],taps10k:['Ten thousand taps','10,000 taps'],taps50k:['Tendinitis','','Tap. Tap. Tap. Again.'],
 ok500:['Five hundred perfects','500 “Perfect” notes'],ok5000:['Raining perfects','5,000 “Perfect” notes'],meas100:['A hundred bars','100 bars played in Arcade'],
@@ -2995,7 +3049,10 @@ const EN_UI={
 /* réglages */
 "Langue":"Language","Language":"Language","Langue du jeu":"Game language","Son":"Sound","Son du rythme":"Rhythm sound","Bois":"Wood","Tenu":"Sustained","Tambour":"Drum","Clic":"Click",
 "Volume du rythme":"Rhythm volume","Volume du métronome":"Metronome volume","Métronome pendant le jeu":"Metronome while playing","Aucun":"None","Temps":"Beats","Subdivisions":"Subdivisions",
-"Guide sonore":"Audio guide","Le rythme est joué pendant que tu frappes : plus facile, moins de lecture.":"The rhythm plays while you tap: easier, less reading.","Son à chaque frappe":"Sound on every tap",
+"Survie terminée !":"Survival complete!","Bravo, tu es meilleur que le jeu. Ça fait longtemps que tu es là ?":"Well done, you're better than the game. Been here long?","Félicitations, tu as tenu jusqu'au bout ! Les autres niveaux t'attendent.":"Congratulations, you made it to the end! The other levels are waiting for you.","Tiens {N0} minutes":"Last {N0} minutes","La partie se termine à {N0} minutes.":"The game ends at {N0} minutes.",
+"Meilleure note":"Best mark","Choisis ton tempo":"Choose your tempo","dès la difficulté {N0}":"from difficulty {N0}","Bonne réponse !":"Correct!","Pas de nouveau palier : pas d'XP":"No new milestone: no XP","Prochain palier : {N0}/{N1} (+{N2} XP)":"Next milestone: {N0}/{N1} (+{N2} XP)","Prochain palier : {N0}/{N1} dès la difficulté {N2} (+{N3} XP)":"Next milestone: {N0}/{N1} from difficulty {N2} (+{N3} XP)","{N0}/{N1} (+{N2} XP)":"{N0}/{N1} (+{N2} XP)","{N0}/{N1} dès la difficulté {N2} (+{N3} XP)":"{N0}/{N1} from difficulty {N2} (+{N3} XP)","dès la difficulté {N0} · +{N1} XP":"from difficulty {N0} · +{N1} XP","Compris":"Got it",
+"Lequel ? Écoute, puis choisis la partition qui correspond.":"Which one? Listen, then pick the matching score.","Erreurs : écoute, puis coche les mesures différentes de ce que tu entends.":"Mistakes: listen, then tick the bars that differ from what you hear.","Après la première écoute, tu as {N0} secondes pour répondre.":"After the first listen, you have {N0} seconds to answer.","Pas de points : c'est bon ou pas bon. Temps écoulé, c'est faux.":"No points: it's right or wrong. Out of time counts as wrong.","{N0} questions, une note sur {N1} à la fin.":"{N0} questions, a mark out of {N1} at the end.","{N0} bonnes réponses d'affilée : difficulté +{N1}. Une erreur : difficulté -{N2}.":"{N0} right answers in a row: difficulty +{N1}. One mistake: difficulty -{N2}.",
+"Suivi de la partition":"Score tracking","Dans le parcours : la mesure en cours est surlignée, ou un curseur avance sur les notes.":"In the journey: the current measure is highlighted, or a cursor moves across the notes.","Curseur":"Cursor","Mesure":"Measure","Guide sonore":"Audio guide","Le rythme est joué pendant que tu frappes : plus facile, moins de lecture.":"The rhythm plays while you tap: easier, less reading.","Son à chaque frappe":"Sound on every tap",
 "Frappe":"Tapping","Tolérance":"Tolerance","Indulgente":"Lenient","Normale":"Normal","Stricte":"Strict","Latence compensée":"Latency compensation",
 "Casque Bluetooth ou téléphone lent : calibre pour que tes frappes tombent juste.":"Bluetooth headphones or a slow phone: calibrate so your taps land right.","Calibrer":"Calibrate","Vibrations":"Vibrations",
 "Affichage et cours":"Display & lessons","Thème":"Theme","Auto":"Auto","Clair":"Light","Sombre":"Dark","Tout débloquer":"Unlock everything",
